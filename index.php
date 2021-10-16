@@ -89,16 +89,16 @@ $headers   = array();
 $headers[] = 'Authorization: Token ' . $auth_token;
 $curl      = curl_init();
 curl_setopt_array($curl, [
-	CURLOPT_URL => "https://demo2.centra.com/api/checkout/categories",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_FOLLOWLOCATION => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_SSL_VERIFYPEER =>FALSE,
-CURLOPT_SSL_VERIFYHOST => FALSE,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_URL => "http://swati.centraqa.com/api/checkout/products/",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_SSL_VERIFYPEER =>FALSE,
+        CURLOPT_SSL_VERIFYHOST => FALSE,
+       // CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
 	// CURLOPT_POSTFIELDS => ["price_amount=1229.0",
 	// 						"price_currency=EUR",
 	// 						"title=Order #390551",
@@ -109,12 +109,13 @@ CURLOPT_SSL_VERIFYHOST => FALSE,
 	// 						"order_id=390551",
 	// 						"description=1 x Apple iPhone 12 "
 	// ],
-	CURLOPT_HTTPHEADER => $headers,
-	// CURLOPT_HTTPHEADER => [
-	// 	'Authorization: Token ' . $auth_token,
-	// 	// "x-rapidapi-host: BlockchainzakutynskyV1.p.rapidapi.com",
-	// 	// "x-rapidapi-key: 4787fb1d34msh5d865994d592badp1f6f93jsnbcbc449e8362"
-	// ],
+	CURLOPT_HTTPHEADER => [
+		"Access-Control-Allow-Origin : http://localhost:1229 ",
+	//	'Authorization: Token ' . $auth_token,
+		 "X-Centra-Request-ID: 1_375b289374dfd7183002e508e30a775b",
+		 "X-Correlation-ID : centra_1_375b289374dfd7183002e508e30a775b",
+		// "x-rapidapi-key: 4787fb1d34msh5d865994d592badp1f6f93jsnbcbc449e8362"
+	],
 ]);
 $json = curl_exec($curl);
 $response = json_decode($json, true);
@@ -1260,7 +1261,7 @@ $err = curl_error($curl);
                 <h2 class="primary__title text-center mb-3">You may also like</h2>
 
                 <?php 
-                    echo "<pre>"; print_r($response); echo "</pre>";
+                    echo "<pre> Response"; print_r($response); echo "</pre>";
                 ?>
                 <span class="clerk" data-template="@homepage-slider"></span>
             </div>

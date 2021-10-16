@@ -1260,7 +1260,7 @@ $err = curl_error($curl);
                 <h2 class="primary__title text-center mb-3">You may also like</h2>
 
                 <?php 
-                    //echo "<pre>"; print_r($response); echo "</pre>";
+                    echo "<pre>"; print_r($response); echo "</pre>";
                 ?>
                 <span class="clerk" data-template="@homepage-slider"></span>
             </div>
